@@ -164,6 +164,9 @@ if [ -z "$${IPKG_INSTROOT}" ]; then
 	/etc/init.d/zapret start
 	# restart firewall
 	[ -x /sbin/fw4 ] && fw4 -q restart || fw3 -q restart
+else
+	export ROOTDIR="$${IPKG_INSTROOT}"
+	/etc/init.d/zapret enable
 fi
 exit 0
 endef

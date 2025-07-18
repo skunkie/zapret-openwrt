@@ -1,8 +1,12 @@
 #!/bin/sh
 # Copyright (c) 2024 remittor
 
-EXEDIR=/opt/zapret
-ZAPRET_BASE=/opt/zapret
+if [ -z "$ROOTDIR" ] then
+	ROOTDIR=""
+}
+
+EXEDIR="$ROOTDIR/opt/zapret"
+ZAPRET_BASE="$ROOTDIR/opt/zapret"
 
 ZAPRET_INITD=/etc/init.d/zapret
 ZAPRET_ORIG_INITD="$ZAPRET_BASE/init.d/openwrt/zapret"

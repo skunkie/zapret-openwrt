@@ -6,8 +6,11 @@ USE_PROCD=1
 START=21
 
 SCRIPT_FILENAME=$1
+if [ -z "$ROOTDIR" ] then
+	ROOTDIR=""
+}
 
-. /opt/zapret/comfunc.sh
+. "$ROOTDIR/opt/zapret/comfunc.sh"
 
 if ! is_valid_config ; then
 	logger -p err -t ZAPRET "Wrong main config: $ZAPRET_CONFIG"
@@ -16,8 +19,8 @@ fi
 
 . $ZAPRET_ORIG_INITD
 
-EXEDIR=/opt/zapret
-ZAPRET_BASE=/opt/zapret
+EXEDIR="$ROOTDIR/opt/zapret"
+ZAPRET_BASE="$ROOTDIR/opt/zapret"
 
 is_run_on_boot && IS_RUN_ON_BOOT=1 || IS_RUN_ON_BOOT=0
 
